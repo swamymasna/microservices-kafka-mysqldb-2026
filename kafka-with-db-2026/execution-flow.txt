@@ -1,1 +1,28 @@
+Open Command Prompt Location : D:\Softwares\kafka
+1. Start Zookeeper Server
+      .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+2. Start Kafka Server
+      .\bin\windows\kafka-server-start.bat .\config\server.properties
 
+3. Start Eureka Server & Access using http://localhost:8761
+
+4. Start Admin Server & Access using http://localhost:1111
+
+5. Start Employee Service
+
+6. Start Notification Service 
+
+7.Make REST API Call as follows :
+
+POST    http://localhost:8081/api/employees
+      {
+          "employeeName" : "M.Swamy",
+          "email" : "swamymasna999@gmail.com"
+      }
+
+8.  Check Both the Databases:
+      SELECT * FROM  employees;
+      SELECT * FROM notifications;
+
+9.  Execution Flow: 
+Employee REST API → Save in MySQL → Publish EmployeeDto with eventType → Kafka → Consume DTO → Save notification in MySQL.
