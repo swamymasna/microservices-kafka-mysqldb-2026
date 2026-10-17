@@ -1,0 +1,32 @@
+# service name
+spring:
+  application:
+    name: admin-server
+
+# server port number		
+server:
+  port: 1111
+  
+# eureka properties	
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+# actuator properties		    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+  info:
+    env:
+      enabled: true
+      
+info:
+  app:
+    name: Admin Server
+    description: To Monitor & Manage Microservices      

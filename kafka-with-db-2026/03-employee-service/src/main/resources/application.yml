@@ -1,0 +1,70 @@
+# server port
+server:
+  port: 8081
+
+# service name
+spring:
+  application:
+    name: employee-service
+    
+# admin client properties
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111
+
+# datasource properties 
+  datasource:
+    url: jdbc:mysql://localhost:3306/employees_db
+    username: root
+    password: root
+    
+# hibernate properties      
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+    show-sql: true
+    
+    properties:
+      hibernate:
+        format_sql: true
+        
+# kafka producer properties       
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer      
+        
+     
+# eureka properties
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# actuator properties
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+      
+info:
+  app:
+    name: Employee Service
+    description: Employee Service manages employee details, performs CRUD operations, publishes employee events to Kafka, and communicates with other microservices.
+    
+        
+
+
+
+
+      
+      

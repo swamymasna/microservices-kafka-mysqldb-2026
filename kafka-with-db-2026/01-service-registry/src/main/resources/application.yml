@@ -1,0 +1,14 @@
+# service name
+spring:
+  application:
+    name: service-registry
+    
+# server port details
+server:
+  port: 8761
+  
+# eureka properties
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

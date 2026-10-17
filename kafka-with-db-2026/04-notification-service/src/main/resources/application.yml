@@ -1,0 +1,65 @@
+# server details
+server:
+  port: 8082
+
+# service name  
+spring:
+  application:
+    name: notification-service
+
+# admin client properties
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111
+
+# datasource properties 
+  datasource:
+    url: jdbc:mysql://localhost:3306/notifications_db
+    username: root
+    password: root
+        
+# hibernate properties      
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+    show-sql: true
+    
+    properties:
+      hibernate:
+        format_sql: true
+            
+# kafka consumer properties 
+  kafka:
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.kes.notificationservice.event"
+        spring.json.value.default.type: com.kes.notificationservice.event.EmployeeEvent
+        spring.json.use.type.headers: false      
+        
+
+
+# actuator properties
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+      
+info:
+  app:
+    name: Notification Service
+    description: Notification Service consumes employee events from Kafka, stores notification details in MySQL, and sends notifications to users.
+
+
+
+
+
